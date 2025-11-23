@@ -1,0 +1,17 @@
+canvas{
+  border:1px solid black;
+}
+
+.buttons
+{
+  display:grid;
+  grid-template-columns: repeat(3,60px);
+  gap:4px;
+  justify-content:center;
+/*  gap: 5px;*/
+}
+
+.game_button{
+  width:60px;
+  height:60px;
+}
