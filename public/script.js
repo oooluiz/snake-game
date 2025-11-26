@@ -1,10 +1,11 @@
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 const cell_size = 16
+const SCORE = $('#score')
 // each pixel has 16 real pixels
 
 const snake = {
-  size: 1,
+  //size: 1,
   pos: [
     {x: 0, y: 0}
   ],
@@ -19,15 +20,6 @@ const snake = {
   },
 
   load: function(){
-    
-    // TODO:
-    // fazer a cobra nao ir pra tras 
-    // e nem pra frente se ela ja estiver indo
-    // acho q deu pra emtender
-    //
-    
-    //if(this.past_direction == 'w' && this.direction == 's'){alert(this.past_direction)}
-    
 
     let head = {...this.pos[0]}
     switch(this.direction)
@@ -55,7 +47,7 @@ const snake = {
     this.load_snake()
 
   },
-  score:1
+  score:0
 }
 /* the snake can walk only 20 pixels up and down
  * since the screen size ÷ 16 is 20 (320/16)
@@ -80,15 +72,16 @@ let apple = {
 
 function eat_or_die()
 {
-  if(snake.score == 2)
+  /*if(snake.score == 2)
   {
     console.dir(`${ snake.pos.slice(1) }`)
     console.dir(`${ snake.pos[0] }`)
-  }
+  }*/ // I don't know why I made this piece of code and I'm pretty sure that it doesn't do anything
 
   if(apple.pos.y == snake.pos[0].y && apple.pos.x == snake.pos[0].x) // if the snake eat the apple...
   {
     snake.score++
+    SCORE.text("score: "+snake.score)
     apple.reset_pos()
     snake.pos.push(apple.pos)
 //    snake.pos.push(apple.pos)
@@ -114,7 +107,7 @@ function eat_or_die()
 game_loop = setInterval(function(){
   if(eat_or_die()){
     clearInterval(game_loop)
-    alert("perdeu fi")
+    alert("you lost")
   }
   ctx.reset() 
   snake.load()
