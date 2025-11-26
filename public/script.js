@@ -126,12 +126,30 @@ game_loop = setInterval(function(){
 // read the first comment
 
 
+opposites = {
+  "w":"s",
+  "s":"w",
 
+  "a":"d",
+  "d":"a"
+}
 $(".game_button").on('click',function(){
+//  alert(opposites[this.id])
+  if(snake.direction == opposites[this.id])
+  {
+    return
+  }
+  
   snake.direction = this.id
 })
 
 $(document).on('keydown',function(event){
+
+  if(snake.direction == opposites[event.key])
+  {
+    return
+  }
+
   if( ['w','a','s','d'].includes(event.key) )
   {
     snake.direction = event.key
