@@ -12,7 +12,7 @@ const snake = {
   direction: null,
   past_direction: null,
   load_snake: function(){
-    ctx.fillStyle = "rgb(0,0,0)"
+    ctx.fillStyle = "rgb(255,255,255)"
 //    ctx.fillRect(this.pos[0].x*16,this.pos[0].y*16,cell_size,cell_size)
     this.pos.forEach((p)=>{
       ctx.fillRect(p.x*16,p.y*16,cell_size,cell_size)
@@ -69,7 +69,7 @@ let apple = {
 
   },
   load: function(){
-    ctx.fillStyle = "rgb(0,100,0)"
+    ctx.fillStyle = "rgb(255,0,0)"
     ctx.fillRect(this.pos.x*16,this.pos.y*16,16,16)
   }
 }

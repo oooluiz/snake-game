@@ -1,5 +1,16 @@
+body{
+  background: rgba(40, 42, 40);
+  color: white;
+}
+
 canvas{
-  border:1px solid black;
+  border:1px solid white;
+  border-radius: 3px;
+}
+
+#score{
+  font-family: "PT Serif", serif;
+  font-weight: 1;
 }
 
 .buttons
@@ -14,4 +25,20 @@ canvas{
 .game_button{
   width:60px;
   height:60px;
+
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.game_button:hover,
+focus{
+  background: white;
+  color: black;
+  height: 57px;
+  width:57px;
 }
