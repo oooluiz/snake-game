@@ -60,8 +60,13 @@ let apple = {
     y: Math.floor(Math.random()*19)
   },
   reset_pos: function(){
-    this.pos.y = Math.floor(Math.random()*19)
-    this.pos.x = Math.floor(Math.random()*19)
+    do {
+      this.pos.y = Math.floor(Math.random()*19)
+      this.pos.x = Math.floor(Math.random()*19)
+    } while(
+      snake.pos.some(part=>part.x*16 == this.pos.x*16 && part.y*16 == this.pos.y*16)
+    ) // relocate the apple until its position doesn't match any part of the snake
+
   },
   load: function(){
     ctx.fillStyle = "rgb(0,100,0)"
@@ -93,31 +98,21 @@ function eat_or_die()
     return true
     // this piece of code checks if the positon of the head
     // is inside the positions array
-    // excluding the head itself, so the snake wont collide with its own head, only the body
+    // excluding the head itself, so the snake wont collide with its own head, only with the body
   }
-
-  // TODO:
-  // PROGRAMAR COLISAO CONSIGO MESMO - FEITO EM 22/11/2025
 }
 
-// TODO--:
-// crescer a cobra XD - FEITO EM 21/11/2025 
-// // A COBRA TA GORDINHA 
 
 game_loop = setInterval(function(){
   if(eat_or_die()){
     clearInterval(game_loop)
-    alert("you lost")
+    alert("you died")
   }
   ctx.reset() 
   snake.load()
   apple.load()
 },150) //gameloop
 // An apple will be placed in a pseudo-random location
-
-// same thing here
-// read the first comment
-
 
 opposites = {
   "w":"s",
